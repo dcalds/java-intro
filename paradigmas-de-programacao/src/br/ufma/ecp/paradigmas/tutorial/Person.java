@@ -13,6 +13,7 @@ public class Person {
 	// Variável de Classe ***Estudar Diferenças***
 	static private int countPerson = 0;
 	
+	// Construtor
 	public Person(String name, int age) {
 		super();
 		this.name = name;
@@ -20,7 +21,7 @@ public class Person {
 		countPerson++;
 	}
 	
-	// Método de classe
+	// Métodos
 	public static int countPerson() {
 		return countPerson;
 	}
@@ -74,6 +75,7 @@ public class Person {
 	}
 
 
+	// Sobrescreve o método toString() (Que retorna o endereço do objeto)
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
