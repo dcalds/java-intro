@@ -9,7 +9,7 @@ public class Teste {
 		// Atributos aplicados na Instância 1
 		c1.modelo = "Compactor";
 		c1.cor = "Azul";
-		c1.ponta = 0.7f;
+		// c1.ponta = 0.7f;
 		c1.carga = 100;
 		
 		// Métodos aplicados na Instância 1
@@ -23,7 +23,7 @@ public class Teste {
 		// Atributos aplicados na Instância 2
 		c2.modelo = "Stinger";
 		c2.cor = "Preta";
-		c2.ponta = 0.5f;
+		// c2.ponta = 0.5f;
 		c2.carga = 80;
 		
 		// Métodos aplicados na Instância 2

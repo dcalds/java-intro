@@ -2,7 +2,7 @@ package br.ufma.ecp.estudosdepoo;
 
 public class Caneta {
 	
-	// Atributos de Instância
+	// Variáveis de Instância
 	
 		// Modificadores de Acesso:
 	
