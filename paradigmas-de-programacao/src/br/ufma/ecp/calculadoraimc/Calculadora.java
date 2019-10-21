@@ -64,25 +64,22 @@ public class Calculadora extends JFrame {
 		calcular.addActionListener((ev) -> {
 			
 			// Neste caso, foi convertido de String para um objeto Float
-				
-				// Obs.: não usei o Equals devido a flexibilidade de encontrar 
-				// um intervalo entre o valor entrado para definir o imc
 			
-			// Tratamento de entradas inválidas
 			Float alturaFloat = new Float(altura.getText());
 			Float massaFloat = new Float(massa.getText());
 			
-			if ( alturaFloat <= 0.0f || altura.getText().length() == 0) {
-				JOptionPane.showMessageDialog(null, "Entrada de altura inválida");
+			
+			if ( alturaFloat <= 0.0f ) {
+				JOptionPane.showMessageDialog(null, "Entrada de altura inválida ");
 		    } 
-			else if ( massaFloat <= 0.0f || massa.getText().length() == 0) {
+			else if ( massaFloat <= 0.0f ) {
 		    	JOptionPane.showMessageDialog(null, "Entrada de massa inválida");
 			} 
 			
 			// Cálculo do IMC
 			else {
 				
-				float imc = massaFloat / (alturaFloat * alturaFloat);
+				float imc = massaFloat / ((alturaFloat * alturaFloat)/10000);
 				
 				// Parâmetros - JOptionPane.showOptionDialog(parentComponent, message, title, optionType, messageType, icon, options, initialValue);
 				// Aqui o valor de float foi convertido para string e separado apenas os primeiros 5 caracteres
