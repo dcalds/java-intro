@@ -2,4 +2,4 @@
 
 Implementação da calculadora de IMC utilizando a biblioteca Swing para interfaces gráficas
 
-<img src="https://github.com/dcalds/java-intro/tree/master/paradigmas-de-programacao/src/br/ufma/ecp/calculadoraimc/test.jpg" alt="Image" width="900" text-center>
+<img src="https://raw.githubusercontent.com/dcalds/java-intro/master/paradigmas-de-programacao/src/br/ufma/ecp/calculadoraimc/test.png" alt="Image" width="300" text-center>
