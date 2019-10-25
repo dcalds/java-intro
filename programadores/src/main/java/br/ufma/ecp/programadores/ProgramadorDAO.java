@@ -32,11 +32,33 @@ public class ProgramadorDAO {
 	}
 	
 	public void openConnection () throws SQLException {
-		conn = DriverManager.getConnection(url);
+		
+		try {
+
+			conn = DriverManager.getConnection(url);
+			System.out.println("Conexão com Banco de Dados iniciada.");
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
+		
 	}
 	
 	public void closeConnection () throws SQLException {
-		conn.close();
+		
+		try {
+			
+			conn.close();
+			System.out.println("Banco de Dados desconectado.");
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+			
+		}
+		
 	}
 	
 }
