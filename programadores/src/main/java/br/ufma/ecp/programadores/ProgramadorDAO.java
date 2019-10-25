@@ -12,11 +12,13 @@ public class ProgramadorDAO {
 
 	public ProgramadorDAO(String username, String password) {
 		
-		url = "jdbc:mysql://localhost/estante?user=" + username + "&password=" + password + "&useTimezone=true&serverTimezone=UTC";
+		url = "jdbc:mysql://localhost/programadores?user=" + username + "&password=" + password + "&useTimezone=true&serverTimezone=UTC";
 	
 	}
 	
 	public void create (Programador programador) throws SQLException {
+		
+		openConnection();
 		
 		String sql = "insert into programador (nome, email, celular) values (?,?,?)";
 		
@@ -29,6 +31,8 @@ public class ProgramadorDAO {
 		stmt.execute();
 		stmt.close();
 		
+		closeConnection();
+		
 	}
 	
 	public void openConnection () throws SQLException {
@@ -40,7 +44,7 @@ public class ProgramadorDAO {
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			System.out.println("Erro ao conectar.");
 			
 		}
 		
@@ -55,7 +59,7 @@ public class ProgramadorDAO {
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			System.out.println("Erro ao desconectar");
 			
 		}
 		
