@@ -16,12 +16,10 @@ public class ProgramadorJTable extends JFrame{
 			ProgramadorTableModel tableModelProg = new ProgramadorTableModel(progDao);
 			
 			JTable JTable = new JTable(tableModelProg);
-			
 			JScrollPane scroll = new JScrollPane();
-			
 			scroll.setViewportView(JTable);
 			add(scroll);
-			setSize(800, 250);
+			setSize(860, 480);
 			setLocationRelativeTo(null);
 			
 		}

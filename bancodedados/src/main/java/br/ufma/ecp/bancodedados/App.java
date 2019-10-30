@@ -8,9 +8,11 @@ public class App
 {
     public static void main( String[] args )
     {
-        Contato c1 = new Contato("Danilo","danilo@gmail.com", "99999999");
-        
-        System.out.println(c1);
-        
+    	
+        GenericDAO gen1 = new GenericDAO();
+    	Contato con1 = new Contato("Danilo","danilo@gmail.com","999999999");
+    	
+    	gen1.create(con1);
+    	
     }
 }
