@@ -4,18 +4,58 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProgramadorDAO {
 	
 	private Connection conn;
+	private PreparedStatement stmt;
 	private String url;
 
-	public ProgramadorDAO(String username, String password) {
-		
-		url = "jdbc:mysql://localhost/programadores?user=" + username + "&password=" + password + "&useTimezone=true&serverTimezone=UTC";
+	// CLASSE DAO
+	public ProgramadorDAO() {
+
+		url = "jdbc:sqlite:C:/sqlite/db/programadores.db";
 	
 	}
 	
+	
+	// ABRIR
+	public void openConnection () throws SQLException {
+		
+		try {
+			
+			conn = DriverManager.getConnection(url);
+			System.out.println("Conexão com Banco de Dados iniciada.");
+			
+		} catch (SQLException e) {
+			
+			System.out.println("Erro ao conectar.");
+			
+		}
+		
+	}
+	
+	
+	// FECHAR
+	public void closeConnection () throws SQLException {
+		
+		try {
+			
+			conn.close();
+			System.out.println("Banco de Dados desconectado.");
+			
+		} catch (SQLException e) {
+			
+			System.out.println("Erro ao desconectar.");
+			
+		}
+		
+	}
+	
+	
+	// CRIAR 
 	public void create (Programador programador) throws SQLException {
 		
 		openConnection();
@@ -34,35 +74,15 @@ public class ProgramadorDAO {
 		closeConnection();
 		
 	}
-	
-	public void openConnection () throws SQLException {
-		
-		try {
 
-			conn = DriverManager.getConnection(url);
-			System.out.println("Conexão com Banco de Dados iniciada.");
-			
-		} catch (SQLException e) {
-			
-			System.out.println("Erro ao conectar.");
-			
-		}
-		
-	}
 	
-	public void closeConnection () throws SQLException {
+	// LER
+	public List<Programador> read () throws SQLException {
 		
-		try {
-			
-			conn.close();
-			System.out.println("Banco de Dados desconectado.");
-			
-		} catch (SQLException e) {
-			
-			System.out.println("Erro ao desconectar");
-			
-		}
+		// String sql = "select * from programador";
+		// List<Programador> programador = new ArrayList<Programador>;
 		
+		return null;	
 	}
 	
 }

@@ -10,7 +10,7 @@ public class FrameProgramador extends JFrame{
 	
 	// Inciando Conexão
 	
-	private ProgramadorDAO progDao = new ProgramadorDAO("root", "1234");
+	private ProgramadorDAO progDao = new ProgramadorDAO();
 	
 	public FrameProgramador(String title) {
 		
@@ -72,7 +72,7 @@ public class FrameProgramador extends JFrame{
 					
 				} catch (SQLException e) {
 					
-					System.out.println("Erro ao cadastrar programador.");
+					System.out.println("Erro ao cadastrar programador." + e);
 					
 				}
 				
