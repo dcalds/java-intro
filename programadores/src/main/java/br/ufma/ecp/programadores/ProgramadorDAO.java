@@ -1,9 +1,6 @@
 package br.ufma.ecp.programadores;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +9,7 @@ public class ProgramadorDAO {
 	private Connection conn;
 	private PreparedStatement stmt;
 	private String url;
+	
 
 	// CLASSE DAO
 	public ProgramadorDAO() {
@@ -59,7 +57,7 @@ public class ProgramadorDAO {
 	public void create (Programador programador) throws SQLException {
 		
 		openConnection();
-		
+				
 		String sql = "insert into programador (nome, email, celular) values (?,?,?)";
 		
 		PreparedStatement stmt = conn.prepareStatement(sql);
@@ -74,15 +72,55 @@ public class ProgramadorDAO {
 		closeConnection();
 		
 	}
+	
+	public void createTable() throws SQLException {
+
+		openConnection();
+		
+		String sql = "create table if not exists programador ( nome text not null, email text primary key, celular text not null)";
+		
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		
+		stmt.execute();
+		stmt.close();
+		
+		closeConnection();
+		
+	}
 
 	
 	// LER
 	public List<Programador> read () throws SQLException {
 		
-		// String sql = "select * from programador";
-		// List<Programador> programador = new ArrayList<Programador>;
+		openConnection();
 		
-		return null;	
+		List<Programador> programadores = new ArrayList<Programador>();
+		String sql = "select * from programador";
+		
+		try {
+			
+			stmt = conn.prepareStatement(sql);
+			
+			ResultSet set = stmt.executeQuery();
+			
+			while (set.next()) {
+				
+				programadores.add(new Programador(set.getString("nome"), set.getString("email"), set.getString("celular")));
+				
+			}
+			
+			stmt.close();
+			
+		} catch (SQLException e) {
+			
+			System.out.println("Erro ao buscar: " + e);
+			
+		}
+		
+		closeConnection();
+		
+		return programadores;
 	}
+
 	
 }

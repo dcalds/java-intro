@@ -8,7 +8,7 @@ public class FrameProgramador extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
-	// Inciando Conexão
+	// INICIAR CONEXÃO COM CLASSE DAO
 	
 	private ProgramadorDAO progDao = new ProgramadorDAO();
 	
@@ -18,20 +18,22 @@ public class FrameProgramador extends JFrame{
 		setLayout(new FlowLayout());
 		
 		
-		// Containers
+		// CONTAINERES
 		
 		JPanel panelNome = new JPanel();
 		JPanel panelEmail = new JPanel();
 		JPanel panelCelular = new JPanel();
 		JPanel panelBotoes = new JPanel();
+		JPanel panelExtra = new JPanel();
 		
 		add(panelNome);
 		add(panelEmail);
 		add(panelCelular);
 		add(panelBotoes);
+		add(panelExtra);
 		
 		
-		// Labels
+		// LABELS
 		
 		JLabel informeNome = new JLabel("Nome: ");
 		JTextField nome = new JTextField(20);
@@ -48,18 +50,37 @@ public class FrameProgramador extends JFrame{
 		panelCelular.add(celular);
 		
 		
-		// Buttons
+		// BOTÕES
 		
 		JButton salvar = new JButton("Salvar");
 		JButton limparCampos = new JButton("Limpar Campos");
 		JButton sair = new JButton("Sair");
+		JButton criarTabela = new JButton("Criar tabela");
+		JButton buscarProgramadores = new JButton("Mostrar Programadores");
 		
 		panelBotoes.add(salvar);
 		panelBotoes.add(limparCampos);
 		panelBotoes.add(sair);
+		panelExtra.add(criarTabela);
+		panelExtra.add(buscarProgramadores);
 		
 		
-		// Actions
+		// AÇÕES
+		
+		criarTabela.addActionListener((ev) -> { 
+				
+				try {
+						progDao.createTable();
+						System.out.println("Criada tabela de programadores");
+						
+					} catch (SQLException e) {
+						
+						System.out.println("Erro ao cadastrar programador." + e);
+						
+					}
+			
+			}
+		); 
 		
 		salvar.addActionListener((ev) -> {  
 				
@@ -68,7 +89,10 @@ public class FrameProgramador extends JFrame{
 				try {
 					
 					progDao.create(programador);
+
+					System.out.println("----------------------------------------------");
 					System.out.println("Cadastro do programador realizado com sucesso!");
+					System.out.println("----------------------------------------------");
 					
 				} catch (SQLException e) {
 					
@@ -77,6 +101,26 @@ public class FrameProgramador extends JFrame{
 				}
 				
 		});
+		
+		
+		buscarProgramadores.addActionListener((ev) -> {
+			
+			ProgramadorJTable tabela;
+			
+				try {
+					
+					tabela = new ProgramadorJTable(progDao);
+					tabela.setVisible(true);
+					
+				} catch (SQLException e) {
+					
+					System.out.println("Erro ao cadastrar programador." + e);
+					
+				}
+					
+				}
+		);
+		
 		
 		limparCampos.addActionListener((ev) -> {
 			

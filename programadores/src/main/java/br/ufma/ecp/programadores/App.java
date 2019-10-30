@@ -11,7 +11,7 @@ public class App
     	
 		JFrame frame = new FrameProgramador("CADASTRO DE PROGRAMADORES");
 		
-		frame.setSize(400, 200);
+		frame.setSize(400, 230);
 		frame.setLocationRelativeTo(null); 
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
