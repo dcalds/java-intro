@@ -8,7 +8,7 @@ public interface AbstractDAO<T> {
 	
 	void create (T obj);
 	
-    List<T> read ();
+    List<T> retrive (); // método utilizado para recuperar no GenericTableModel
     
     void update (T obj);
     
